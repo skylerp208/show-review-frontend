@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ShowContainer from "./ShowContainer"
 
 class App extends Component {
+
+  state={
+    shows: []
+  }
+
+  componentDidMount(){
+    fetch("http://localhost:3000/api/v1/shows")
+    .then(res => res.json())
+    .then(shows => {
+      this.setState({
+        shows: shows
+      })
+    })
+  }
+
   render() {
+    console.log(this.state.shows);
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <ShowContainer shows={this.state.shows}/>
       </div>
     );
   }
