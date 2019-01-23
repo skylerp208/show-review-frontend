@@ -163,37 +163,59 @@ a:hover {
   height: 780px;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(10, 90px);
-  margin-left: 5%
+  margin-left: 10%
 }
 
 .home-header {
   grid-column: 1/13;
   padding-top: 10px;
-  margin-bottom: 0
+  margin-bottom: 0;
+  font-size: 30px
 }
 
 .box1 {
-  background-color: LightGreen;
-  grid-row: 2/5;
-  grid-column: 2/5
+  /* background-color: LightGreen; */
+  grid-row: 2/6;
+  grid-column: 1/5
 }
 
 .box2{
-  background-color: CornflowerBlue;
+  /* background-color: CornflowerBlue; */
   grid-row: 7/8;
   grid-column: 1/2
 }
 
 .box3{
-  background-color: MediumPurple;
-  grid-column: 10/12;
-  grid-row: 5/7
+  /* background-color: MediumPurple; */
+  grid-column: 9/12;
+  grid-row: 5/8
 }
 
 .box4{
-  background-color: IndianRed;
+  /* background-color: IndianRed; */
   grid-column: 11/13;
   grid-row: 2/4
+}
+
+.box5 {
+  /* background-color: red; */
+  grid-column: 6/8;
+  grid-row: 5/7
+}
+
+.home-desc {
+  animation: blinker 4.1s linear infinite;
+  font-size: 60px;
+  line-height: 60px;
+  grid-column: 6 / 10;
+  grid-row: 2 / 4;
+  padding: 2px;
+  text-align: left
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 
 .ui.icon.button {
@@ -204,7 +226,9 @@ a:hover {
 .description {
   float: left;
   width: 80%;
-  text-align: left
+  text-align: left;
+  word-wrap: break-word;
+
 }
 
 .content {

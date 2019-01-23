@@ -39,7 +39,7 @@ class App extends Component {
   search = (e) => {
     if (e.target.value === "") {
       this.setState({
-        someShows: this.state.shows.slice(0,24)
+        someShows: this.state.shows.slice(0,24),
       })
     }
     else {

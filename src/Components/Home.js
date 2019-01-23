@@ -1,19 +1,24 @@
-import React from 'react'
+import React from 'react';
+import Box from "./Box"
 
 
-const Home = () => {
+class Home extends React.Component {
 
-  return (
-    <div className='homePage'>
-      <h1 className="home-header"> Welcome to the home page </h1>
-      <div className='box1'>  </div>
-      <div className='box2'>  </div>
-      <div className='box3'>  </div>
-      <div className='box4'>  </div> 
 
-    </div>
-
-  )
+render()
+  {
+     return (
+      <div className='homePage'>
+        <marquee className="home-header"> Welcome to the home page </marquee>
+        <Box class = 'box1'  color = {{'background-color': 'LightGreen'}}/>
+        <Box class  = 'box2' color = {{'background-color' : 'CornflowerBlue'}} />
+        <Box class = 'box3' color = {{'background-color' : 'MediumPurple'}}/>
+        <Box class = 'box4' color = {{'background-color': "IndianRed"}}/>
+        <Box class = 'box5' color = {{'background-color' : 'SkyBlue'}} />
+        <div className = "home-desc"> Check out these boxes </div>
+      </div>
+    )
+  }
 
 }
 
