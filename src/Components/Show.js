@@ -5,9 +5,9 @@ const Show = props => {
   const {show} = props;
   return(
 
-      <div className = "ui card">
+      <div className = "ui black link card">
         <div className= "ui medium image">
-        <img className= 'image'src={show.image} alt = '' />
+        <img className= 'mage'src={show.image} alt = '' />
         </div>
         <div className= 'content' >
           <Link to ={`/shows/${show.id}`} >

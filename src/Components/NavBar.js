@@ -3,7 +3,7 @@ import React from "react"
 class NavBar extends React.Component  {
 
   state={
-    toggleSearch: true
+    toggleSearch: true,
   }
 
   toggleSearch = (e) => {
@@ -24,7 +24,8 @@ return (
       {this.state.toggleSearch ?
         null
       : <div className = 'ui input'>
-        <input className='search-bar' type='text' placeholder="Search shows..." onChange = {this.props.search}/>
+        <input className='search-bar' type='text' placeholder="Search shows..." onChange = {this.props.search}
+        />
       </div>
       }
       <a className="profile link"href= ''> Profile </a>

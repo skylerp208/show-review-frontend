@@ -12,6 +12,9 @@ class ShowPage extends React.Component {
   submitHandler = (e, show) => {
     let content = this.state.reviewContent
     this.props.addComment(e, show, content)
+    this.setState({
+      reviewContent: ""
+    })
   }
 
   writeComment = (e) => {
@@ -22,6 +25,9 @@ class ShowPage extends React.Component {
 
   removeTags(str){
      let output = str.replace("<p>", "");
+      output = output.replace("</p>", "")
+
+      output = output.replace("<p>", "");
       output = output.replace("</p>", "")
 
       output = output.replace("<b>", "")
@@ -39,8 +45,10 @@ render () {
   let allReviews = this.props.show.reviews.map(review => {
       return <Review
       key = {review.id}
+      review = {review}
       content={review.content}
       user={review.user}
+      deleteComment={this.props.deleteComment}
       />
   })
 
@@ -65,7 +73,8 @@ render () {
       <div className = "review-form">
         <form className = "ui form"onSubmit={(e) => this.submitHandler(e, this.props.show)}>
           <div className='field'>
-          <textarea rows ='2'onChange={(e) => this.writeComment(e)}placeholder = "write a review!"/>
+          <textarea rows ='2'onChange={(e) => this.writeComment(e)}placeholder = "write a review!"
+          value={this.state.reviewContent}/>
           </div>
           <input className = 'ui button'type='submit' value = "Submit Review" />
         </form>

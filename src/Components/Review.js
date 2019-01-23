@@ -12,9 +12,11 @@ class Review extends React.Component {
           <div className = 'header'>
             {this.props.user.username}
           </div>
-          <div className = "description">
+          <span className = "description">
             {this.props.content}
-          </div>
+          </span> 
+          <button className = 'ui icon button' onClick={(e) => this.props.deleteComment(e, this.props.review)}><i class = 'trash icon'> </i>
+          </button>
         </div>
       </div>
     )

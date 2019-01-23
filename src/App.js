@@ -27,7 +27,7 @@ class App extends Component {
 
   scrollFunction = () =>{
    window.addEventListener("scroll",(e)=>{
-     if (window.pageYOffset >= (document.body.scrollHeight-725)){
+     if (window.pageYOffset >= (document.body.scrollHeight-725) && (this.state.search === '')){
        //END OF PAGE SO FETCH AND SET STATE
       let newArr = this.state.someShows
       let num = newArr.length + 24
@@ -37,11 +37,18 @@ class App extends Component {
      }
 
   search = (e) => {
-    let showArr = this.state.shows.filter(show => show.title.toUpperCase().includes(this.state.search))
-    this.setState({
-      search: e.target.value.toUpperCase(),
-      someShows : showArr
-    })
+    if (e.target.value === "") {
+      this.setState({
+        someShows: this.state.shows.slice(0,24)
+      })
+    }
+    else {
+      let showArr = this.state.shows.filter(show =>   show.title.toUpperCase().includes(this.state.search))
+      this.setState({
+        search: e.target.value.toUpperCase(),
+        someShows : showArr
+      })
+    }
 
   }
 
@@ -54,7 +61,7 @@ class App extends Component {
         'Accepts' : "application/json"
       },
       body: JSON.stringify({
-          'user_id' : 1,
+          'user_id' : (Math.random() * (6 - 1) + 1),
           'show_id' : show.id,
           'rating': 5,
           'content' : content
@@ -65,6 +72,19 @@ class App extends Component {
       shows: data,
       someShows: data
     }))
+  }
+
+  deleteComment = (e, review) => {
+    fetch(`http://localhost:3000/api/v1/reviews/${review.id}`, {
+      method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(data=> {
+      this.setState ({
+        shows: data,
+        someShows: data
+      })
+    })
   }
 
 
@@ -87,6 +107,7 @@ class App extends Component {
                 shows={this.state.someShows}
                 onScroll={this.scrollFunction}
                 addComment={this.addComment}
+                deleteComment={this.deleteComment}
               />
             )} else {
               return <Loading />

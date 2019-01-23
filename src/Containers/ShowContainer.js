@@ -27,6 +27,7 @@ const ShowContainer = (props) => {
               <ShowPage
                 show = {show}
                 addComment={props.addComment}
+                deleteComment={props.deleteComment}
               />
             )
           }}
